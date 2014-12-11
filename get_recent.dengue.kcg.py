@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
+from StringIO import StringIO
 import re
 import json
 import requests
 import datetime
 import pandas as pd
+import prettytable 
 
 headers = {
     "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -52,4 +54,7 @@ for i in range(30):
         
 df = pd.DataFrame.from_dict(F, orient='columns')
 newset = df.T.fillna(0)
-newset.to_csv('dengue.Confirmed.DIST.recent.csv',encoding='utf-8')
+output = StringIO()
+newset.to_csv(output,encoding='utf-8')
+output.seek(0)
+print prettytable.from_csv(output)
