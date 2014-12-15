@@ -34,9 +34,9 @@ data = {
     "DropDownList_AreaType":"DIST", #DIST VILLAGE
         }
 
-date = datetime.date(2014,12,1)
+date = datetime.date(2014,12,10)
 F = {}
-for i in range(30):
+for i in range(5):
         data["TextBox_Start"] = date
         date += datetime.timedelta(days=1)
         data['TextBox_End'] = date
@@ -55,6 +55,6 @@ for i in range(30):
 df = pd.DataFrame.from_dict(F, orient='columns')
 newset = df.T.fillna(0)
 output = StringIO()
-newset.to_csv(output,encoding='utf-8')
+newset.to_csv(output,encoding='utf-8',sep=',')
 output.seek(0)
 print prettytable.from_csv(output)
