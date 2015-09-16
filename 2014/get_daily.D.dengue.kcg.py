@@ -34,7 +34,7 @@ data = {
 
 date = datetime.date(2013,12,31)
 F = {}
-for i in range(360):
+for i in range(420):
         data["TextBox_Start"] = date
         date += datetime.timedelta(days=1)
         data['TextBox_End'] = date
@@ -52,4 +52,4 @@ for i in range(360):
         
 df = pd.DataFrame.from_dict(F, orient='columns')
 newset = df.T.fillna(0)
-newset.to_csv('dengue.Confirmed.DIST.20140101-20141231.csv',encoding='utf-8')
+newset.to_csv('dengue.Confirmed.DIST.20140101-20150208.csv',encoding='utf-8')
